@@ -1,0 +1,97 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "",
+        "version": "1.0.0",
+        "title": "",
+        "termsOfService": "",
+        "contact": {
+            "name": ""
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "k8s-libvirt-cloudprovider.k8s.io",
+    "basePath": "/v1/k8s-libvirt-cloudprovider",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/domains": {
+            "get": {
+                "tags": [
+                    "domain"
+                ],
+                "summary": "Get all active domains. Todo Add a parameter to get active/inactive/all",
+                "description": "",
+                "operationId": "getAllActiveDomains",
+                "produces": [
+                    "application/json"
+                ],
+                  "responses": {
+                        "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Domain"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/domains/{domainID}": {
+            "get": {
+                "tags": [
+                    "domain"
+                ],
+                "summary": "Get all active domains. Todo Add a parameter to get active/inactive/all",
+                "description": "",
+                "operationId": "getDomainByID",
+                "produces": [
+                    "application/json"
+                ],
+                 "parameters": [
+                    {
+                        "in": "path",
+                        "name": "domainID",
+                        "description": "The ID that needs to be fetched.",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successfull operation",
+                        "schema": {
+                            "$ref": "#/definitions/Domain"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid ID"
+                    },
+                    "404": {
+                        "description": "Domain not found"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Domain": {
+            "properties": {
+                "ID": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "xml": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
