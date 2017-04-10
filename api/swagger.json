@@ -39,6 +39,12 @@
                                 "$ref": "#/definitions/Domain"
                             }
                         }
+                    },
+                    "500": {
+                        "description": "internal error",
+                        "schema": {
+                            "type": "string"
+                        }   
                     }
                 }
             }
@@ -61,7 +67,7 @@
                         "description": "The ID that needs to be fetched.",
                         "required": true,
                         "type": "integer",
-                        "format": "int64"
+                        "format": "int32"
                     }
                 ],
                 "responses": {
@@ -86,7 +92,7 @@
             "properties": {
                 "ID": {
                     "type": "integer",
-                    "format": "int64"
+                    "format": "int32"
                 },
                 "xml": {
                     "type": "string"

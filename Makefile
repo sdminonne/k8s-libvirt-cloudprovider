@@ -6,4 +6,5 @@ validate_swagger:
 	swagger validate api/swagger.json
 
 generate_server: validate_swagger
+	#go get -u -f ./...
 	swagger generate server -f api/swagger.json -A k8s-libvirt-cloudprovider
